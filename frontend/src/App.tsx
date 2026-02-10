@@ -4,8 +4,9 @@ import {
   Route,
   BrowserRouter,
 } from "react-router-dom";
-import Dashboard from "./pages/Dashboard";
+import { lazy, Suspense } from "react";
 
+const Dashboard = lazy(() => import("./pages/Dashboard"));
 function App() {
   return (
     <BrowserRouter
