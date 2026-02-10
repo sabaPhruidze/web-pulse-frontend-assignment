@@ -15,9 +15,11 @@ function App() {
         v7_relativeSplatPath: true,
       }}
     >
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-      </Routes>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 }
