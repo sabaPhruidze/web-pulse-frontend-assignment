@@ -10,11 +10,9 @@ export default {
           surface: "#111B2E",
           surface2: "#16223A",
           border: "#26324F",
-
           text: "#EAF0FF",
           muted: "#9AA6C0",
           soft: "#6B7693",
-
           success: "#22C55E",
           danger: "#EF4444",
           warning: "#FBBF24",
