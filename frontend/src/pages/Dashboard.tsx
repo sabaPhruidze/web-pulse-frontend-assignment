@@ -1,6 +1,8 @@
 import Header from "../components/header/Header";
 import SectionCard from "../components/header/ui/SectionCard";
+import usePortfolio from "../api/portfolio";
 const Dashboard = () => {
+  const { data, isLoading, isError } = usePortfolio();
   return (
     <div className="bg-pulse-bg min-h-screen">
       <Header />
@@ -9,20 +11,28 @@ const Dashboard = () => {
         <p className="text-sm text-pulse-soft font-semibold">
           Portfolio snapshot and market overview
         </p>
-        <SectionCard title="Portfolio Summary">
-          <div className="my-3">
-            <p className="text-pulse-soft font-semibold text-sm">Total Value</p>
-            <strong className="text-pulse-text text-2xl">$125,000.50</strong>
-          </div>
-          <div>
-            <p className="text-pulse-soft font-semibold text-sm">
-              Total Change
-            </p>
-            <strong className="text-pulse-success/80 ">
-              $3,250.75 (+2.67%)
-            </strong>
-          </div>
-        </SectionCard>
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : isError ? (
+          <div>error</div>
+        ) : (
+          <SectionCard title="Portfolio Summary">
+            <div className="my-3">
+              <p className="text-pulse-soft font-semibold text-sm">
+                Total Value
+              </p>
+              <strong className="text-pulse-text text-2xl">$125,000.50</strong>
+            </div>
+            <div>
+              <p className="text-pulse-soft font-semibold text-sm">
+                Total Change
+              </p>
+              <strong className="text-pulse-success/80 ">
+                $3,250.75 (+2.67%)
+              </strong>
+            </div>
+          </SectionCard>
+        )}
       </div>
     </div>
   );
