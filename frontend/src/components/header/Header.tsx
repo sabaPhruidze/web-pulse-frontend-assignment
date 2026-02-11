@@ -3,7 +3,7 @@ import Search from "./Search";
 import SUNNY from "../../assets/icons/sunny.png";
 const Header = () => {
   return (
-    <div className="w-full h-16 text-pulse-text bg-pulse-surface2 border-4 border-pulse-border flex  justify-between items-center px-4">
+    <div className="w-full h-16 text-pulse-text bg-pulse-surface2 border-2 border-pulse-border flex  justify-between items-center px-4">
       <button className="bg-pulse-surface2 text-white border-pulse-border rounded-lg p-2 border-2">
         <Menu className="w-5 h-5" />
       </button>

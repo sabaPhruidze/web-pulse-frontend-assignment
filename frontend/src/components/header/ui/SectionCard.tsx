@@ -7,9 +7,9 @@ type Props = {
 
 const SectionCard = ({ title, children }: Props) => {
   return (
-    <section>
+    <section className="bg-pulse-border/30 my-5 p-5 border-2 border-pulse-border rounded-lg">
       <div>
-        <h2>{title}</h2>
+        <h2 className="font-bold text-pulse-text">{title}</h2>
       </div>
       <div>{children}</div>
     </section>
