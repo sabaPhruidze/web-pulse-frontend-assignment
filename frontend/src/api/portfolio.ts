@@ -11,8 +11,6 @@ const usePortfolio = () => {
       );
       return data;
     },
-    staleTime: 30_000,
-    refetchOnWindowFocus: false,
   });
 };
 
