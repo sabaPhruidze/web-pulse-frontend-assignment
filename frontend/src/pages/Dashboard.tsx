@@ -2,7 +2,12 @@ import Header from "../components/header/Header";
 import SectionCard from "../components/header/ui/SectionCard";
 import usePortfolio from "../api/portfolio";
 const Dashboard = () => {
-  const { data, isLoading, isError } = usePortfolio();
+  const { data: portfolio, isLoading, isError } = usePortfolio();
+  const { totalValue, totalChange, totalChangePercent } = portfolio?.data ?? {
+    totalValue: 0,
+    totalChangePercent: 0,
+    totalChange: 0,
+  };
   return (
     <div className="bg-pulse-bg min-h-screen">
       <Header />
@@ -21,14 +26,14 @@ const Dashboard = () => {
               <p className="text-pulse-soft font-semibold text-sm">
                 Total Value
               </p>
-              <strong className="text-pulse-text text-2xl">$125,000.50</strong>
+              <strong className="text-pulse-text text-2xl">{totalValue}</strong>
             </div>
             <div>
               <p className="text-pulse-soft font-semibold text-sm">
                 Total Change
               </p>
               <strong className="text-pulse-success/80 ">
-                $3,250.75 (+2.67%)
+                ${totalChange} (+{totalChangePercent}%)
               </strong>
             </div>
           </SectionCard>
