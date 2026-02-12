@@ -1,6 +1,6 @@
 import Header from "../components/header/Header";
 import SectionCard from "../components/header/ui/SectionCard";
-import usePortfolio from "../api/portfolio";
+import usePortfolio from "../api/portfolio/portfolio";
 const Dashboard = () => {
   const { data: portfolio, isLoading, isError } = usePortfolio();
   const { totalValue, totalChange, totalChangePercent } = portfolio?.data ?? {
