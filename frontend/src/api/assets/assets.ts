@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import type { Assets } from "../../types/Assets";
+import type { Assets } from "../../types/assets";
 
 const useAssets = () => {
   return useQuery({

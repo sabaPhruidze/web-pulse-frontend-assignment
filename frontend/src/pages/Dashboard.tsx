@@ -1,6 +1,7 @@
 import Header from "../components/header/Header";
 import SectionCard from "../components/header/ui/SectionCard";
 import usePortfolio from "../api/portfolio/portfolio";
+import useAssets from "../api/assets/assets";
 const Dashboard = () => {
   const { data: portfolio, isLoading, isError } = usePortfolio();
   const { totalValue, totalChange, totalChangePercent } = portfolio?.data ?? {
@@ -8,6 +9,12 @@ const Dashboard = () => {
     totalChangePercent: 0,
     totalChange: 0,
   };
+  const { data: assets } = useAssets();
+  const list = assets?.data ?? [];
+
+  const topGainers = [...list]
+    .sort((a, b) => b.changePercent - a.changePercent) //by this it will align them by the order of From top to bottom
+    .slice(0, 3);
   return (
     <div className="bg-pulse-bg min-h-screen">
       <Header />
@@ -41,19 +48,35 @@ const Dashboard = () => {
               </div>
             </SectionCard>
             <SectionCard title="Top Gainers">
-              <div className="">
-                <p className="text-pulse-text font-bold">
-                  NVDA{" "}
-                  <span className="font-semibold text-pulse-soft text-[14px]">
-                    NVIDIA Corporation
-                  </span>
-                </p>
-                <p className="text-xs text-pulse-soft font-semibold">$485.20</p>
-                <p className="text-pulse-success/80 text-sm font-bold">
-                  +3.45%
-                </p>
-                <hr className="border-pulse-border mt-5" />
-              </div>
+              {topGainers.map(
+                (
+                  { id, symbol, name, sector, currentPrice, changePercent },
+                  idx,
+                ) => (
+                  <div key={id}>
+                    <div className="flex items-center justify-between">
+                      <p className="text-pulse-text font-bold mt-3">
+                        {symbol}{" "}
+                        <span className="font-semibold text-pulse-soft text-[14px]">
+                          {name}
+                        </span>
+                      </p>
+                      <p className="text-right text-pulse-soft">
+                        {sector || "Crypto"}
+                      </p>
+                    </div>
+                    <p className="text-xs text-pulse-soft font-semibold mb-3">
+                      ${currentPrice}
+                    </p>
+                    <p className="text-pulse-success/80 text-sm font-bold text-right">
+                      +{changePercent}%
+                    </p>
+                    {idx !== topGainers.length - 1 && (
+                      <hr className="border-pulse-border mt-5" />
+                    )}
+                  </div>
+                ),
+              )}
             </SectionCard>
           </>
         )}
