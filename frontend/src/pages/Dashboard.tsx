@@ -26,7 +26,12 @@ const Dashboard = () => {
         {isLoading ? (
           <p>Loading...</p>
         ) : isError ? (
-          <div>error</div>
+          <div className="mt-4 text-red-400">
+            Error loading Dashboard data
+            <div className="text-xs opacity-80 mt-1">
+              {error instanceof Error ? error.message : "Unknown error"}
+            </div>
+          </div>
         ) : (
           <>
             <SectionCard title="Portfolio Summary">
