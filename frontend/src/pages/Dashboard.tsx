@@ -1,6 +1,7 @@
 import Header from "../components/header/Header";
 import SectionCard from "../components/header/ui/SectionCard";
 import useDashboardData from "../api/hooks/useDashboardData";
+import PortfolioSummaryCard from "./dashboard/PortfolioSummaryCard";
 const Dashboard = () => {
   const { data, isLoading, isError, error } = useDashboardData();
   const portfolio = data?.portfolio;
@@ -34,24 +35,11 @@ const Dashboard = () => {
           </div>
         ) : (
           <>
-            <SectionCard title="Portfolio Summary">
-              <div className="my-3">
-                <p className="text-pulse-soft font-semibold text-sm">
-                  Total Value
-                </p>
-                <strong className="text-pulse-text text-2xl">
-                  {totalValue}
-                </strong>
-              </div>
-              <div>
-                <p className="text-pulse-soft font-semibold text-sm">
-                  Total Change
-                </p>
-                <strong className="text-pulse-success/80 ">
-                  ${totalChange} (+{totalChangePercent}%)
-                </strong>
-              </div>
-            </SectionCard>
+            <PortfolioSummaryCard
+              totalValue={totalValue}
+              totalChange={totalChange}
+              totalChangePercent={totalChangePercent}
+            />
             <SectionCard title="Top Gainers">
               {topGainers.map(
                 (
