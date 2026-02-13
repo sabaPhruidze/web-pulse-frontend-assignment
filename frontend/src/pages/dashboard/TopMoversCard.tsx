@@ -37,7 +37,7 @@ function TopMoversCard({ title, assets = [], mode }: Props) {
             <p className={`${percentClass} text-sm font-bold text-right`}>
               {Object.is(mode, "gainers")
                 ? `+${changePercent}%`
-                : `-${changePercent}%`}
+                : `${changePercent}%`}
             </p>
             {idx !== topThree.length - 1 && (
               <hr className="border-pulse-border mt-5" />

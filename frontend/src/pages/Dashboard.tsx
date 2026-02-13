@@ -1,16 +1,11 @@
 import Header from "../components/header/Header";
-import SectionCard from "../components/header/ui/SectionCard";
 import useDashboardData from "../api/hooks/useDashboardData";
 import PortfolioSummaryCard from "./dashboard/PortfolioSummaryCard";
 import TopMoversCard from "./dashboard/TopMoversCard";
 const Dashboard = () => {
   const { data, isLoading, isError, error } = useDashboardData();
   const assets = data?.assets;
-
   const list = assets?.data ?? [];
-  const topGainers = [...list]
-    .sort((a, b) => b.changePercent - a.changePercent) //by this it will align them by the order of From top to bottom
-    .slice(0, 3);
   return (
     <div className="bg-pulse-bg min-h-screen">
       <Header />
