@@ -7,13 +7,13 @@ interface Assets {
   change: number;
   changePercent: number;
 }
-interface Data {
-  userId: string;
+export interface Data {
+  userId?: string;
   totalValue: number;
   totalChange: number;
   totalChangePercent: number;
-  assets: Assets[];
-  watchlist: string[];
+  assets?: Assets[];
+  watchlist?: string[];
 }
 export interface Portfolio {
   success: boolean;
