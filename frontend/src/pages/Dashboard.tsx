@@ -2,6 +2,7 @@ import Header from "../components/header/Header";
 import SectionCard from "../components/header/ui/SectionCard";
 import useDashboardData from "../api/hooks/useDashboardData";
 import PortfolioSummaryCard from "./dashboard/PortfolioSummaryCard";
+import TopMoversCard from "./dashboard/TopMoversCard";
 const Dashboard = () => {
   const { data, isLoading, isError, error } = useDashboardData();
   const assets = data?.assets;
@@ -30,37 +31,8 @@ const Dashboard = () => {
         ) : (
           <>
             <PortfolioSummaryCard summary={data?.portfolio.data} />
-            <SectionCard title="Top Gainers">
-              {topGainers.map(
-                (
-                  { id, symbol, name, sector, currentPrice, changePercent },
-                  idx,
-                ) => (
-                  <div key={id}>
-                    <div className="flex items-center justify-between">
-                      <p className="text-pulse-text font-bold mt-3">
-                        {symbol}{" "}
-                        <span className="font-semibold text-pulse-soft text-[14px]">
-                          {name}
-                        </span>
-                      </p>
-                      <p className="text-right text-pulse-soft">
-                        {sector || "Crypto"}
-                      </p>
-                    </div>
-                    <p className="text-xs text-pulse-soft font-semibold mb-3">
-                      ${currentPrice}
-                    </p>
-                    <p className="text-pulse-success/80 text-sm font-bold text-right">
-                      +{changePercent}%
-                    </p>
-                    {idx !== topGainers.length - 1 && (
-                      <hr className="border-pulse-border mt-5" />
-                    )}
-                  </div>
-                ),
-              )}
-            </SectionCard>
+            <TopMoversCard title="Top Gainers" assets={list} mode="gainers" />
+            <TopMoversCard title="Top Losers" assets={list} mode="losers" />
           </>
         )}
       </div>
