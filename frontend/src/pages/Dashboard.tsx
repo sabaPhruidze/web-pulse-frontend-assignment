@@ -1,17 +1,17 @@
 import Header from "../components/header/Header";
 import SectionCard from "../components/header/ui/SectionCard";
-import usePortfolio from "../api/portfolio/portfolio";
-import useAssets from "../api/assets/assets";
+import useDashboardData from "../api/hooks/useDashboardData";
 const Dashboard = () => {
-  const { data: portfolio, isLoading, isError } = usePortfolio();
+  const { data, isLoading, isError, error } = useDashboardData();
+  const portfolio = data?.portfolio;
+  const assets = data?.assets;
   const { totalValue, totalChange, totalChangePercent } = portfolio?.data ?? {
     totalValue: 0,
     totalChangePercent: 0,
     totalChange: 0,
   };
-  const { data: assets } = useAssets();
-  const list = assets?.data ?? [];
 
+  const list = assets?.data ?? [];
   const topGainers = [...list]
     .sort((a, b) => b.changePercent - a.changePercent) //by this it will align them by the order of From top to bottom
     .slice(0, 3);
