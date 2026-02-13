@@ -1,8 +1,8 @@
-interface TopMover {
+export interface TopMover {
   id: string;
   symbol: string;
   name: string;
-  sector: string;
+  sector?: string;
   currentPrice: number;
   changePercent: number;
 }
