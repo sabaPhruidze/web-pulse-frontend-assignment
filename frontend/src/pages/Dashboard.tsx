@@ -4,13 +4,7 @@ import useDashboardData from "../api/hooks/useDashboardData";
 import PortfolioSummaryCard from "./dashboard/PortfolioSummaryCard";
 const Dashboard = () => {
   const { data, isLoading, isError, error } = useDashboardData();
-  const portfolio = data?.portfolio;
   const assets = data?.assets;
-  const { totalValue, totalChange, totalChangePercent } = portfolio?.data ?? {
-    totalValue: 0,
-    totalChangePercent: 0,
-    totalChange: 0,
-  };
 
   const list = assets?.data ?? [];
   const topGainers = [...list]
@@ -35,11 +29,7 @@ const Dashboard = () => {
           </div>
         ) : (
           <>
-            <PortfolioSummaryCard
-              totalValue={totalValue}
-              totalChange={totalChange}
-              totalChangePercent={totalChangePercent}
-            />
+            <PortfolioSummaryCard summary={data?.portfolio.data} />
             <SectionCard title="Top Gainers">
               {topGainers.map(
                 (

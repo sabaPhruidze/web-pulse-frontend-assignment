@@ -1,15 +1,19 @@
 import SectionCard from "../../components/header/ui/SectionCard";
 
-type Props = {
+type PortfolioSummary = {
   totalValue: number;
   totalChange: number;
   totalChangePercent: number;
 };
-function PortfolioSummaryCard({
-  totalValue,
-  totalChange,
-  totalChangePercent,
-}: Props) {
+type Props = {
+  summary?: PortfolioSummary;
+};
+function PortfolioSummaryCard({ summary }: Props) {
+  const { totalValue, totalChange, totalChangePercent } = summary ?? {
+    totalValue: 0,
+    totalChangePercent: 0,
+    totalChange: 0,
+  };
   return (
     <SectionCard title="Portfolio Summary">
       <div className="my-3">
