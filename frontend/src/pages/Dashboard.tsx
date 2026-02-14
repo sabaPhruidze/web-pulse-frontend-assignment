@@ -8,7 +8,7 @@ const Dashboard = () => {
   const { data, isLoading, isError, error } = useDashboardData();
   const assets = data?.assets;
   const list = assets?.data ?? [];
-  const news = data?.news;
+  const news = data?.news ?? { success: true, count: 0, data: [] };
   return (
     <div className="bg-pulse-bg min-h-screen">
       <Header />
@@ -31,7 +31,7 @@ const Dashboard = () => {
             <PortfolioSummaryCard summary={data?.portfolio.data} />
             <TopMoversCard title="Top Gainers" assets={list} mode="gainers" />
             <TopMoversCard title="Top Losers" assets={list} mode="losers" />
-            <LatestNewsCard news={data?.news} />
+            <LatestNewsCard news={news} />
           </>
         )}
       </div>

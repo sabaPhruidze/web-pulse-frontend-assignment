@@ -1,4 +1,4 @@
-type NewsCategory =
+export type NewsCategory =
   | "market"
   | "crypto"
   | "technology"
