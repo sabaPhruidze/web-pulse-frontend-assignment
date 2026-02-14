@@ -2,10 +2,13 @@ import Header from "../components/header/Header";
 import useDashboardData from "../api/hooks/useDashboardData";
 import PortfolioSummaryCard from "./dashboard/PortfolioSummaryCard";
 import TopMoversCard from "./dashboard/TopMoversCard";
+import LatestNewsCard from "./dashboard/LatestNewsCard";
+
 const Dashboard = () => {
   const { data, isLoading, isError, error } = useDashboardData();
   const assets = data?.assets;
   const list = assets?.data ?? [];
+  const news = data?.news;
   return (
     <div className="bg-pulse-bg min-h-screen">
       <Header />
@@ -28,6 +31,7 @@ const Dashboard = () => {
             <PortfolioSummaryCard summary={data?.portfolio.data} />
             <TopMoversCard title="Top Gainers" assets={list} mode="gainers" />
             <TopMoversCard title="Top Losers" assets={list} mode="losers" />
+            <LatestNewsCard news={data?.news} />
           </>
         )}
       </div>
