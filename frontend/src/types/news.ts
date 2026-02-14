@@ -1,10 +1,19 @@
+type NewsCategory =
+  | "market"
+  | "crypto"
+  | "technology"
+  | "macro"
+  | "earnings"
+  | "regulatory";
+type NewsImpact = "low" | "medium" | "high" | "critical";
+
 interface ReceiveNews {
   id: string;
   title: string;
   source: string;
-  category: string;
+  category: NewsCategory;
   timestamp: string;
-  impact: string;
+  impact: NewsImpact;
   summary: string;
   tags: string[];
 }
