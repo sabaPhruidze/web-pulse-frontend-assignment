@@ -5,7 +5,7 @@ export type NewsCategory =
   | "macro"
   | "earnings"
   | "regulatory";
-type NewsImpact = "low" | "medium" | "high" | "critical";
+export type NewsImpact = "low" | "medium" | "high" | "critical";
 
 interface ReceiveNews {
   id: string;
