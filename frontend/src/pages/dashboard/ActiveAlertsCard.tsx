@@ -1,24 +1,11 @@
 import SectionCard from "../../components/header/ui/SectionCard";
-import type { AlertsData, Alerts } from "../../types/alerts";
+import type { Alerts } from "../../types/alerts";
+import { badgeClassBySeverity } from "../../lib/badges";
 import { formatTimesSTamp } from "../../lib/format";
 type Props = {
   alerts: Alerts;
 };
 
-const badgeClassBySeverity = (severity: AlertsData["severity"]) => {
-  switch (severity) {
-    case "low":
-      return "bg-pulse-border/40 text-pulse-soft border border-pulse-border";
-    case "medium":
-      return "bg-yellow-500/10 text-yellow-300 border border-yellow-500/20";
-    case "high":
-      return "bg-orange-500/10 text-orange-300 border border-orange-500/20";
-    case "critical":
-      return "bg-red-500/10 text-red-300 border border-red-500/20";
-    default:
-      return "bg-pulse-border/40 text-pulse-soft border border-pulse-border";
-  }
-};
 const ActiveAlertsCard = ({ alerts }: Props) => {
   const items = alerts.data.slice(0, 5);
   return (
@@ -37,6 +24,9 @@ const ActiveAlertsCard = ({ alerts }: Props) => {
                 {item.severity}
               </span>
             </div>
+            <p className="text-xs text-pulse-soft font-semibold mt-2">
+              {formatTimesSTamp(item.timestamp)}
+            </p>
             <p className="text-xs text-pulse-soft font-semibold mt-2">
               {idx !== items.length - 1 && (
                 <hr className="border-pulse-border mt-4" />

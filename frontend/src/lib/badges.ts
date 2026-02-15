@@ -1,5 +1,5 @@
 import type { NewsCategory, NewsImpact } from "../types/news";
-
+import type { AlertsData } from "../types/alerts";
 export const badgeClassByCategory = (category: NewsCategory) => {
   switch (category) {
     case "market":
@@ -20,6 +20,21 @@ export const badgeClassByCategory = (category: NewsCategory) => {
 };
 export const badgeClassByImpact = (impact: NewsImpact) => {
   switch (impact) {
+    case "low":
+      return "bg-pulse-border/40 text-pulse-soft border border-pulse-border";
+    case "medium":
+      return "bg-yellow-500/10 text-yellow-300 border border-yellow-500/20";
+    case "high":
+      return "bg-orange-500/10 text-orange-300 border border-orange-500/20";
+    case "critical":
+      return "bg-red-500/10 text-red-300 border border-red-500/20";
+    default:
+      return "bg-pulse-border/40 text-pulse-soft border border-pulse-border";
+  }
+};
+
+export const badgeClassBySeverity = (severity: AlertsData["severity"]) => {
+  switch (severity) {
     case "low":
       return "bg-pulse-border/40 text-pulse-soft border border-pulse-border";
     case "medium":
