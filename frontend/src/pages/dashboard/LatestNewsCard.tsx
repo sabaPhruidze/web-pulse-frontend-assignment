@@ -1,18 +1,11 @@
 import SectionCard from "../../components/header/ui/SectionCard";
 import type { News, NewsCategory, NewsImpact } from "../../types/news";
+import { formatTimesSTamp } from "../../lib/format";
 type Props = {
   news: News;
 };
 // for making an order
-const formatTimesSTamp = (iso: string) => {
-  const d = new Date(iso);
-  return new Intl.DateTimeFormat("en-US", {
-    month: "short",
-    day: "2-digit",
-    hour: "numeric",
-    minute: "2-digit",
-  }).format(d);
-};
+
 const badgeClassByCategory = (category: NewsCategory) => {
   switch (category) {
     case "market":
