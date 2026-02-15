@@ -1,9 +1,10 @@
+import type { NewsImpact } from "./news";
 export interface AlertsData {
   id: string;
-  severity: string;
+  severity: NewsImpact;
   message: string;
   timestamp: string;
-  affectedAssets: string[];
+  affectedAssets?: string[];
 }
 
 export interface Alerts {
