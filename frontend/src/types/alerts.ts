@@ -4,7 +4,6 @@ export interface AlertsData {
   severity: NewsImpact;
   message: string;
   timestamp: string;
-  affectedAssets?: string[];
 }
 
 export interface Alerts {
