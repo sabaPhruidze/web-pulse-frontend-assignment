@@ -1,4 +1,4 @@
-import SectionCard from "../../components/header/ui/SectionCard";
+import SectionCard from "../../components/ui/SectionCard";
 import type { Alerts } from "../../types/alerts";
 import { badgeClassBySeverity } from "../../lib/badges";
 import { formatTimesSTamp } from "../../lib/format";

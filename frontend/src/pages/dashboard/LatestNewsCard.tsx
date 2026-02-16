@@ -1,4 +1,4 @@
-import SectionCard from "../../components/header/ui/SectionCard";
+import SectionCard from "../../components/ui/SectionCard";
 import type { News } from "../../types/news";
 import { formatTimesSTamp } from "../../lib/format";
 import { badgeClassByCategory, badgeClassByImpact } from "../../lib/badges";

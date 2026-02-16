@@ -1,4 +1,4 @@
-import SectionCard from "../../components/header/ui/SectionCard";
+import SectionCard from "../../components/ui/SectionCard";
 import type { Data } from "../../types/portfolio";
 
 type Props = {

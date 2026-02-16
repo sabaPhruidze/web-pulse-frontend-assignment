@@ -1,4 +1,4 @@
-import SectionCard from "../../components/header/ui/SectionCard";
+import SectionCard from "../../components/ui/SectionCard";
 import type { TopMover } from "../../types/assets";
 
 type Props = {
