@@ -22,7 +22,7 @@ const Search = () => {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search..."
-        className="w-full px-3 py-2 rounded-lg bg-pulse-surface border-2 border-pulse-border text-pulse-text placeholder:text-pulse-soft focus:outline-none focus:ring-2 focus:ring-pulse-primary transition-shadow duration-300 ease-in-out"
+        className="search-bar"
       />
       {/* <p>Debounced {debouncedQuery || "-"}</p> This will have what has to be displayed for the future*/}
     </div>

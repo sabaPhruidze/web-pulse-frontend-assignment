@@ -25,7 +25,7 @@ function Assets() {
           <input
             type="text"
             placeholder="Search by symbol or name..."
-            className="w-full px-3 py-2 rounded-lg bg-pulse-surface border-2 border-pulse-border text-pulse-text placeholder:text-pulse-soft focus:outline-none focus:ring-2 focus:ring-pulse-primary transition-shadow duration-300 ease-in-out"
+            className="search-bar"
           />
         </div>
       </div>
