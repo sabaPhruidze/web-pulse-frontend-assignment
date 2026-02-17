@@ -1,4 +1,5 @@
 import React from "react";
+import type { TopMover } from "../../types/assets";
 type Props = {
   title?: string;
 };
