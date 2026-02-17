@@ -9,7 +9,7 @@ type Props = {
   errorMessage?: string;
 };
 
-const formatPct = (n: number) => `${n > 0 ? "+" : ""}${n.toFixed(2)}`;
+const formatPct = (n: number) => `${n > 0 ? "+" : ""}${n.toFixed(2)}%`;
 const AssetsListCard = ({
   title = "Assets",
   items,
@@ -19,7 +19,7 @@ const AssetsListCard = ({
 }: Props) => {
   return (
     <SectionCard title="Assets">
-      <div className="text-xs text-pulse-soft font-semibold flex justify between">
+      <div className=" text-pulse-soft font-semibold flex justify-between mt-5">
         <span>Symbol</span>
         <span>Change %</span>
       </div>
@@ -43,12 +43,23 @@ const AssetsListCard = ({
                   className="py-3 flex items-center justify-between"
                 >
                   <div>
-                    <p>{asset.symbol}</p>
-                    <p>{asset.name}</p>
+                    <p className="text-pulse-text font-bold text-sm">
+                      {asset.symbol}
+                    </p>
+                    <p className="text-pulse-soft text-xs">{asset.name}</p>
                   </div>
                   <div className="text-right">
-                    <p>{formatPct(asset.changePercent)}</p>
-                    <p>${asset.currentPrice.toLocaleString()}</p>
+                    <p
+                      className={[
+                        "text-sm font-bold",
+                        isUp ? "text-pulse-success" : "text-pulse-danger",
+                      ].join(" ")}
+                    >
+                      {formatPct(asset.changePercent)}
+                    </p>
+                    <p className="text-pulse-muted font-semibold">
+                      ${asset.currentPrice.toLocaleString()}
+                    </p>
                   </div>
                 </div>
               );
