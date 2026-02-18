@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 
 type Props = {
   value: string;
