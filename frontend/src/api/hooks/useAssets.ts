@@ -6,7 +6,7 @@ const useAssets = ({ filter, search }: Params) => {
   return useQuery<Assets>({
     queryKey: ["assets", filter, search],
     queryFn: async () => {
-      return getAssets();
+      return getAssets({ filter, search });
       //{
       //    type:filter ==='all' ? 'all' : filter === 'stocks' ? 'stock ' : 'crypto',
       //   seach:search.trim() || undefined,

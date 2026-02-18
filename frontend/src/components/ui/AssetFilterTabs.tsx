@@ -28,6 +28,8 @@ const AssetFilterTabs = ({ value, onChange }: Props) => {
                 : "bg-pulse-surface text-pulse-soft",
             ].join(" ")}
             key={tab.key}
+            type="button"
+            onClick={() => onChange(tab.key)}
           >
             {tab.label}
           </button>
