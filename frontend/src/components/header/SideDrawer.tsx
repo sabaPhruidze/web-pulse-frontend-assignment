@@ -7,10 +7,6 @@ type Props = {
   onClose: () => void;
 };
 
-const linkBase =
-  "flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-semibold";
-const linkActive = "bg-indigo-500/60 text-white";
-const linkIdle = "text-pulse-soft hover:bg-pulse-surface2";
 const SideDrawer = ({ open, onClose }: Props) => {
   return (
     <AnimatePresence>
@@ -52,7 +48,7 @@ const SideDrawer = ({ open, onClose }: Props) => {
                 end
                 onClick={onClose}
                 className={({ isActive }) =>
-                  `${linkBase} ${isActive ? linkActive : linkIdle}`
+                  `link-base ${isActive ? "link-active" : "link-iddle"}`
                 }
               >
                 <span>Dashboard</span>
@@ -61,7 +57,7 @@ const SideDrawer = ({ open, onClose }: Props) => {
                 to="/assets"
                 onClick={onClose}
                 className={({ isActive }) =>
-                  `${linkBase} ${isActive ? linkActive : linkIdle}`
+                  `link-base ${isActive ? "link-active" : "link-iddle"}`
                 }
               >
                 <span>Assets</span>

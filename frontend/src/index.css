@@ -20,4 +20,13 @@ code {
   .search-bar {
     @apply w-full px-3 py-2 rounded-lg bg-pulse-surface border-2 border-pulse-border text-pulse-text placeholder:text-pulse-soft focus:outline-none focus:ring-2 focus:ring-pulse-primary transition-shadow duration-300 ease-in-out;
   }
+  .link-base {
+    @apply flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-semibold;
+  }
+  .link-active {
+    @apply bg-indigo-500/60 text-white;
+  }
+  .link-iddle {
+    @apply text-pulse-soft hover:bg-pulse-surface2;
+  }
 }
