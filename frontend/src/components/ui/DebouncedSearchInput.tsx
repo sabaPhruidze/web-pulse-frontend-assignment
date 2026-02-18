@@ -6,7 +6,6 @@ type Props = {
   onDebounce?: (v: string) => void;
   delay?: number;
   placeholder?: string;
-
   className?: string;
 };
 

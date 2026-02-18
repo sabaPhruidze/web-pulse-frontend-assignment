@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import DebouncedSearchInput from "../ui/DebouncedSearchInput";
 const Search = () => {
   const [query, setQuery] = useState(""); // user written text
