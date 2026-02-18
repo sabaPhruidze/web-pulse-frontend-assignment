@@ -27,11 +27,11 @@ const ActiveAlertsCard = ({ alerts }: Props) => {
             <p className="text-xs text-pulse-soft font-semibold mt-2">
               {formatTimesSTamp(item.timestamp)}
             </p>
-            <p className="text-xs text-pulse-soft font-semibold mt-2">
+            <div className="text-xs text-pulse-soft font-semibold mt-2">
               {idx !== items.length - 1 && (
                 <hr className="border-pulse-border mt-4" />
               )}
-            </p>
+            </div>
           </div>
         ))}
         {!items.length && (
