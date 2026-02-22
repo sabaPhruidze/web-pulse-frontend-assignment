@@ -18,7 +18,6 @@ function Assets() {
   const [sortDir, setSortDir] = useState<SortDir>("desc");
 
   const displayedItems = sortAssetsByChangePercent(items, sortDir);
-  console.log(displayedItems);
   return (
     <PageLayout
       title="Assets"
@@ -30,10 +29,13 @@ function Assets() {
         onChange={setSearchInput}
         onDebounce={setSearch}
       />
-      <button onClick={() => setSortDir("asc")}>test</button>
       <AssetsListCard
         title="Assets"
         items={items}
+        sortDir={sortDir}
+        onToggleSort={() =>
+          setSortDir((prev) => (Object.is(prev, "asc") ? "desc" : "asc"))
+        }
         isLoading={isLoading}
         isError={isError}
         errorMessage={error instanceof Error ? error.message : "Unknown error"}

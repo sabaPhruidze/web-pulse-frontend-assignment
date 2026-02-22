@@ -1,4 +1,4 @@
-import React from "react";
+import { SortDir } from "../../lib/sortAssets";
 import type { TopMover } from "../../types/assets";
 import SectionCard from "./SectionCard";
 type Props = {
@@ -7,6 +7,9 @@ type Props = {
   isLoading?: boolean;
   isError?: boolean;
   errorMessage?: string;
+
+  sortDir?: SortDir;
+  onToggleSort?: () => void;
 };
 
 const formatPct = (n: number) => `${n > 0 ? "+" : ""}${n.toFixed(2)}%`;
