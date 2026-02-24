@@ -18,9 +18,9 @@ describe("sortAssetsByChangePercent", () => {
     expect(result.map((x) => x.symbol)).toEqual(["NVDA", "AAPL", "ETH"]);
   });
   test("Does not mutate the original array", () => {
-    const items = [...baseItems];
-    const before = [...items];
+    const items = [...baseItems]; //original here
+    const before = [...items]; //copy
     sortAssetsByChangePercent(items, "asc");
-    expect(items).toEqual(before);
+    expect(items).toEqual(before); // original will not be affected by the change
   });
 });
