@@ -10,6 +10,9 @@ type Props = {
 
   sortDir?: SortDir;
   onToggleSort?: () => void;
+
+  onAssetClick?: (asset: TopMover) => void;
+  onAssetHover?: (asset: TopMover) => void;
 };
 
 const formatPct = (n: number) => `${n > 0 ? "+" : ""}${n.toFixed(2)}%`;
@@ -20,6 +23,8 @@ const AssetsListCard = ({
   errorMessage,
   sortDir,
   onToggleSort,
+  onAssetClick,
+  onAssetHover,
 }: Props) => {
   return (
     <SectionCard title="Assets">
@@ -52,9 +57,12 @@ const AssetsListCard = ({
             {items.map((asset) => {
               const isUp = asset.changePercent >= 0;
               return (
-                <div
+                <button
                   key={asset.id ?? asset.symbol}
-                  className="py-3 flex items-center justify-between"
+                  type="button"
+                  onClick={() => onAssetClick?.(asset)}
+                  onMouseEnter={() => onAssetHover?.(asset)}
+                  className="w-full py-3 flex items-center justify-between text-left rounded cursor-pointer hover:bg-pulse-card/40"
                 >
                   <div>
                     <p className="text-pulse-text font-bold text-sm">
@@ -75,7 +83,7 @@ const AssetsListCard = ({
                       ${asset.currentPrice.toLocaleString()}
                     </p>
                   </div>
-                </div>
+                </button>
               );
             })}
           </div>
