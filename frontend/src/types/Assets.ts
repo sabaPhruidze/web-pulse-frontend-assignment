@@ -5,6 +5,10 @@ export interface TopMover {
   sector?: string;
   currentPrice: number;
   changePercent: number;
+  changeAmount?: number;
+  volume?: number;
+  marketCap?: number;
+  assetType?: "stock" | "crypto";
 }
 export type AssetFilter = "all" | "stocks" | "crypto";
 export interface Assets {

@@ -60,8 +60,8 @@ const AssetsListCard = ({
                 <button
                   key={asset.id ?? asset.symbol}
                   type="button"
-                  onClick={() => onAssetClick?.(asset)}
-                  onMouseEnter={() => onAssetHover?.(asset)}
+                  onClick={() => onAssetClick?.(asset)} // if onAssetClick exist than it calls that function passing asset
+                  onMouseEnter={() => onAssetHover?.(asset)} // on button until w-full is written it contains only the part that is necessary
                   className="w-full py-3 flex items-center justify-between text-left rounded cursor-pointer hover:bg-pulse-card/40"
                 >
                   <div>
