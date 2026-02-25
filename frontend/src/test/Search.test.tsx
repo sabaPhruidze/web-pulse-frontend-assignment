@@ -4,6 +4,12 @@ import { MemoryRouter } from "react-router-dom";
 import Search from "../components/header/Search";
 import userEvent from "@testing-library/user-event";
 import { fireEvent } from "@testing-library/react";
+import { useLocation } from "react-router-dom";
+
+const LocationDisplay = () => {
+  const location = useLocation();
+  return <div data-testid="location">{location.pathname}</div>;
+};
 describe("Header's Search", () => {
   //codes in test's are sometimes repeated because ech test is independent from another
   test("renders search input , exists search or not", () => {
@@ -51,7 +57,7 @@ describe("Header's Search", () => {
   });
   //typeing and deboundce check
   test("in order to filter results after debounce when user types", () => {
-    vi.useFakeTimers();
+    vi.useFakeTimers(); // this is for not using real time like setTimeout or setInterval. it self control's of tim
 
     render(
       <MemoryRouter>
@@ -60,12 +66,13 @@ describe("Header's Search", () => {
     );
 
     const input = screen.getByRole("searchbox");
-
+    //as if user clicked
     fireEvent.click(input); // firevent is sync so it will not have an issue with fakeTimer
-    fireEvent.change(input, { target: { value: "asse" } });
+    fireEvent.change(input, { target: { value: "asse" } }); //as if user wrote asse for assets search
 
     // act-ში გახვევა React state update-ებისთვის
     act(() => {
+      //by this it tells that DOM might be updated so wait 500miliseconds
       // act is doing something like this wrapps with 1 safe block for updaiting correctly before expect runs
       vi.advanceTimersByTime(500);
     });
@@ -75,7 +82,7 @@ describe("Header's Search", () => {
       screen.queryByRole("button", { name: /assets/i }),
     ).toBeInTheDocument();
 
-    vi.useRealTimers();
+    vi.useRealTimers(); // get back's to real time
   });
   // test of when writing inside search and no results shown what it has to display after debounce
   test("display no results when search has no matcher after debounce in dropdownmenu", () => {
@@ -93,5 +100,19 @@ describe("Header's Search", () => {
     });
     expect(screen.getByText(/no results/i)).toBeInTheDocument();
     vi.useRealTimers();
+  });
+  //lastly will test when clicked f.e assets or dashboard it will move on that link
+  test("navigates to /assets when user clicks Assets result", async () => {
+    const user = userEvent.setup();
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Search />
+        <LocationDisplay />
+      </MemoryRouter>,
+    );
+    const input = screen.getByRole("searchbox");
+    await user.click(input);
+    await user.click(screen.getByRole("button", { name: /assets/i }));
+    expect(screen.getByTestId("location")).toHaveTextContent("/assets");
   });
 });
