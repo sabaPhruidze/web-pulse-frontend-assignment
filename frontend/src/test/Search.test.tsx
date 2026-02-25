@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, act } from "@testing-library/react";
 import { describe, test, expect, vi } from "vitest"; //vi is for fake timing
 import { MemoryRouter } from "react-router-dom";
 import Search from "../components/header/Search";
@@ -20,6 +20,8 @@ describe("Header's Search", () => {
     const user = userEvent.setup();
     render(
       <MemoryRouter>
+        {" "}
+        {/* mini router which is covers brower necesary part when used link or useNavigate */}
         <Search />
       </MemoryRouter>,
     );
@@ -48,25 +50,31 @@ describe("Header's Search", () => {
     expect(screen.queryByRole("button", { name: /assets/i })).toBeNull();
   });
   //typeing and deboundce check
-  test("in order to filter results after debounce when user types", async () => {
-    vi.useFakeTimers(); // by this it will use selfcontrol and not setTimeout or setInterval
-    const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
+  test("in order to filter results after debounce when user types", () => {
+    vi.useFakeTimers();
 
     render(
       <MemoryRouter>
         <Search />
       </MemoryRouter>,
     );
+
     const input = screen.getByRole("searchbox");
-    await user.click(input);
-    // By this only assets should remain not dashboard anymore
-    await user.type(input, "asse");
-    //since I have written 500 ms I have to write it to wait or else it will be error
-    vi.advanceTimersByTime(500); //faking 500ms running
+
+    fireEvent.click(input); // firevent is sync so it will not have an issue with fakeTimer
+    fireEvent.change(input, { target: { value: "asse" } });
+
+    // act-ში გახვევა React state update-ებისთვის
+    act(() => {
+      // act is doing something like this wrapps with 1 safe block for updaiting correctly before expect runs
+      vi.advanceTimersByTime(500);
+    });
+
     expect(screen.queryByRole("button", { name: /dashboard/i })).toBeNull();
     expect(
       screen.queryByRole("button", { name: /assets/i }),
     ).toBeInTheDocument();
-    vi.useRealTimers(); //get back tothe real time
+
+    vi.useRealTimers();
   });
 });
