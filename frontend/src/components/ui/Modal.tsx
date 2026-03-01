@@ -26,7 +26,7 @@ const Modal = ({ open, title, onClose, children }: ModalProps) => {
   if (!open) return null;
   return createPortal(
     <div className="fixed inset-0 z-50">
-      {/*It will cover whole area using inset-0 */}{" "}
+      {/*It will cover whole area using inset-0 */}
       {/*This layer will be in front of other layers when it will be opened */}
       {/* backdrop */}
       <div className="absolute inset-0 bg-black/40" onClick={onClose}>
