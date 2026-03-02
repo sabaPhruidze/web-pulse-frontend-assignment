@@ -32,15 +32,13 @@ const AssetDetailsModal = ({
     <Modal open={open} title={`${asset.symbol} details`} onClose={onClose}>
       {/* Header Area */}
       <div className="mb-4">
-        <p className="text-lg font-bold text-pulse-text">{asset.name}</p>
-        <div className="flex items-center gap-2 mt-1">
-          <span className="text-xs px-2 py-1 rounded border border-pulse-border text-pulse-soft">
-            {asset.symbol}
-          </span>
+        <strong className="text-xl font-bold text-pulse-text">
+          {asset.name}
+        </strong>
+        <div className="flex items-center gap-2 mt-1 ">
+          <span className="tags-asset">{asset.symbol}</span>
           {asset.sector ? (
-            <span className="text-xs px-2 py-1 rounded border border-pulse-border text-pulse-soft">
-              {asset.sector}
-            </span>
+            <span className="tags-asset">{asset.sector}</span>
           ) : null}
         </div>
       </div>

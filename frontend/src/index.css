@@ -29,4 +29,7 @@ code {
   .link-iddle {
     @apply text-pulse-soft hover:bg-pulse-surface2;
   }
+  .tags-asset {
+    @apply text-xs px-2 py-1 rounded border border-pulse-border text-pulse-soft;
+  }
 }
