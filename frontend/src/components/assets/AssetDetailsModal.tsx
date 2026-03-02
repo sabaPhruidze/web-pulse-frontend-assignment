@@ -42,9 +42,10 @@ const AssetDetailsModal = ({
           ) : null}
         </div>
       </div>
+
       {/* price summary */}
-      <div className="rounded-lg border border-pulse-border p-3 mb-4">
-        <div className="flex items-center justify-center">
+      <div className="rounded-lg border border-pulse-border p-3 mb-4 ">
+        <div className="flex items-center gap-x-28">
           <p className="text-sm text-pulse-soft">Current price</p>
           <p className="text-xl font-bold text-pulse-text">{priceText}</p>
         </div>

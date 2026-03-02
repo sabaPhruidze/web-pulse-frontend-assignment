@@ -25,14 +25,14 @@ const Modal = ({ open, title, onClose, children }: ModalProps) => {
   }, [open, onClose]);
   if (!open) return null;
   return createPortal(
-    <div className="fixed inset-0 z-50">
+    <div className="fixed inset-0 z-50 ">
       {/*It will cover whole area using inset-0 */}
       {/*This layer will be in front of other layers when it will be opened */}
       {/* backdrop */}
-      <div className="absolute inset-0 bg-black/40" onClick={onClose}>
+      <div className="absolute inset-0 bg-black/40 " onClick={onClose}>
         {/*when clicked outside of main part(halfly dark part) it will be closed */}
         {/* center container */}
-        <div className="absolute inset-0 flex items-center justify-center p-4">
+        <div className="absolute inset-0 flex items-center justify-center p-4 ">
           {/* header */}
           <div className="px-4 py-3 border-b border-pulse-border bg-pulse-bg/90 rounded-3xl">
             <div className="flex place-items-end justify-between gap-2">
@@ -49,7 +49,7 @@ const Modal = ({ open, title, onClose, children }: ModalProps) => {
               </button>
             </div>
             {/* body */}
-            <div className="p-10">{children}</div>
+            <div className="py-10 px-16">{children}</div>
           </div>
         </div>
       </div>
