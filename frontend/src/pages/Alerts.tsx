@@ -3,6 +3,7 @@ import SectionCard from "../components/ui/SectionCard";
 import useAlerts from "../api/hooks/useAlerts";
 import AlertSeveritySummary from "../components/ui/AlertSeveritySummary";
 import AlertListItem from "../components/ui/AlertListItem";
+import AlertList from "../components/ui/AlertList";
 const Alerts = () => {
   const { data, isLoading, isError, error } = useAlerts();
   const counts: {
@@ -32,14 +33,7 @@ const Alerts = () => {
         {!isLoading && !isError && (
           <div className="space-y-4 ">
             <AlertSeveritySummary {...counts} />
-            {data?.data[0] && (
-              <div className="rounded-lg border border-pulse-border p-3">
-                <p className="mb-2 text-xs font-semibold text-pulse-soft">
-                  First alert preview
-                </p>
-                <AlertListItem item={data?.data[0]} />
-              </div>
-            )}
+            <AlertList items={data?.data || []} />
           </div>
         )}
       </SectionCard>
