@@ -21,7 +21,12 @@ const Alerts = () => {
     medium: groups.medium.length,
     low: groups.low.length,
   };
-
+  const sections = [
+    { title: "Critical Alerts", severity: "critical", items: groups.critical },
+    { title: "High Alerts", severity: "high", items: groups.high },
+    { title: "Medium Alerts", severity: "medium", items: groups.medium },
+    { title: "Low Alerts", severity: "low", items: groups.low },
+  ] as const;
   return (
     <PageLayout
       title="Alerts"
@@ -39,26 +44,9 @@ const Alerts = () => {
         {!isLoading && !isError && data && (
           <div className="space-y-5">
             <AlertSeveritySummary {...counts} />
-            <AlertSeverityGroup
-              title="Critical Alerts"
-              severity="critical"
-              items={groups.critical}
-            />
-            <AlertSeverityGroup
-              title="High Alerts"
-              severity="high"
-              items={groups.high}
-            />
-            <AlertSeverityGroup
-              title="Medium Alerts"
-              severity="medium"
-              items={groups.medium}
-            />
-            <AlertSeverityGroup
-              title="Low Alerts"
-              severity="low"
-              items={groups.low}
-            />
+            {sections.map((section) => (
+              <AlertSeverityGroup key={section.severity} {...section} />
+            ))}
           </div>
         )}
       </SectionCard>
