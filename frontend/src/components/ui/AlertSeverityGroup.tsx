@@ -9,10 +9,10 @@ type Props = {
   items: AlertsData[];
 };
 const AlertSeverityGroup = ({ title, severity, items }: Props) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(severity === "medium");
   if (!items.length) return null;
   return (
-    <section className="space-y-3">
+    <section className="space-y-1">
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}

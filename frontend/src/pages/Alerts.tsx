@@ -42,7 +42,7 @@ const Alerts = () => {
           </p>
         )}
         {!isLoading && !isError && data && (
-          <div className="space-y-5">
+          <div className="space-y-3">
             <AlertSeveritySummary {...counts} />
             {sections.map((section) => (
               <AlertSeverityGroup key={section.severity} {...section} />
